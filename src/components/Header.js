@@ -1,6 +1,7 @@
+// Header.js
 import React, { useState } from 'react';
 
-const Header = ({ onLoginClick, onRegisterClick }) => {
+const Header = ({ onLoginClick, onRegisterClick, user, onLogout }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -43,8 +44,14 @@ const Header = ({ onLoginClick, onRegisterClick }) => {
               <li><a href="#contact" onClick={() => scrollToSection('contact')}>Kontakt</a></li>
               {mobileMenuOpen && (
                 <div className="mobile-auth-buttons">
-                  <button className="btn btn-outline" onClick={onLoginClick}>Anmelden</button>
-                  <button className="btn btn-primary" onClick={onRegisterClick}>Registrieren</button>
+                  {user ? (
+                    <button className="btn btn-outline" onClick={onLogout}>Abmelden</button>
+                  ) : (
+                    <>
+                      <button className="btn btn-outline" onClick={onLoginClick}>Anmelden</button>
+                      <button className="btn btn-primary" onClick={onRegisterClick}>Registrieren</button>
+                    </>
+                  )}
                 </div>
               )}
             </ul>
@@ -54,8 +61,14 @@ const Header = ({ onLoginClick, onRegisterClick }) => {
           </nav>
           
           <div className="auth-buttons">
-            <button className="btn btn-outline" onClick={onLoginClick}>Anmelden</button>
-            <button className="btn btn-primary" onClick={onRegisterClick}>Registrieren</button>
+            {user ? (
+              <button className="btn btn-outline" onClick={onLogout}>Abmelden</button>
+            ) : (
+              <>
+                <button className="btn btn-outline" onClick={onLoginClick}>Anmelden</button>
+                <button className="btn btn-primary" onClick={onRegisterClick}>Registrieren</button>
+              </>
+            )}
           </div>
         </div>
       </div>

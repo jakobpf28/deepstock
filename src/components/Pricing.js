@@ -1,8 +1,13 @@
+// Pricing.js
 import React from 'react';
 
 const Pricing = () => {
   const handlePlanSelect = (plan) => {
-    alert(`${plan} Abonnement ausgewählt! (Diese Funktion ist nur eine Demo)`);
+    if (plan === 'Basic') {
+      window.location.href = 'https://buy.stripe.com/aFabJ3fEq6mO4ZZ0sbbQY00';
+    } else if (plan === 'Pro') {
+      window.location.href = 'https://buy.stripe.com/9B6fZj9g2fXoeAz6QzbQY01';
+    }
   };
 
   return (
